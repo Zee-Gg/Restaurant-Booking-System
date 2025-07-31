@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Confirmation</title>
+    <link rel="stylesheet" href="restaurant.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for Your Reservation!</h1>
+        <div id="confirmationDetails">
+            <!-- Reservation details will be dynamically inserted here -->
+        </div>
+        <button onclick="window.location.href='restaurant.html';">Make Another Reservation</button>
+    </div>
+    <script>
+        // Retrieve reservation details from localStorage
+        var reservationDetails = JSON.parse(localStorage.getItem('reservationDetails'));
+
+        // Display reservation details
+        if (reservationDetails) {
+            var detailsDiv = document.getElementById('confirmationDetails');
+            detailsDiv.innerHTML = `
+                <p><strong>Name:</strong> ${reservationDetails.name}</p>
+                <p><strong>Email:</strong> ${reservationDetails.email}</p>
+                <p><strong>Phone:</strong> ${reservationDetails.phone}</p>
+                <p><strong>Date:</strong> ${reservationDetails.date}</p>
+                <p><strong>Time:</strong> ${reservationDetails.time}</p>
+                <p><strong>Number of Guests:</strong> ${reservationDetails.guests}</p>
+                <p><strong>Special Requests:</strong> ${reservationDetails.requests}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
